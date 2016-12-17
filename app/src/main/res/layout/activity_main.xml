@@ -8,10 +8,75 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.etran.worktime.MainActivity">
+    tools:context="com.etran.worktime.activity.MainActivity">
 
     <TextView
+        android:text="@string/time_statistic_text"
+        android:textSize="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="186dp"
+        android:id="@+id/textView6" />
+
+    <RelativeLayout
+        android:id="@+id/timePanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="@string/overtime_text_1"
+            android:textSize="@dimen/time_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/overTime1"
+            android:layout_below="@+id/time1"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="26dp" />
+
+        <TextView
+            android:text="@string/overtime_text_2"
+            android:textSize="@dimen/time_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/overTime2"
+            android:layout_alignBaseline="@+id/overTime1"
+            android:layout_alignBottom="@+id/overTime1"
+            android:layout_toEndOf="@+id/time2"
+            android:layout_marginStart="12dp" />
+
+        <TextView
+            android:text="00:50"
+            android:textSize="@dimen/worked_time_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time2"
+            android:layout_below="@+id/time1"
+            android:layout_toEndOf="@+id/overTime1"
+            android:layout_marginStart="11dp" />
+
+        <TextView
+            android:text="07:50"
+            android:textSize="@dimen/worked_time_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:text="@string/time_text"
+            android:textSize="@dimen/time_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timeText"
+            android:layout_above="@+id/time2"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="22dp" />
+
+    </RelativeLayout>
+
 </RelativeLayout>
