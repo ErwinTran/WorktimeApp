@@ -34,7 +34,7 @@ public class TimeCalculator {
     }
 
     public String calculateWorkedTime() {
-        double workedTime = calculatingWorkedTime();
+        double workedTime = getWorkedTime();
 
         return new Time(workedTime).toString();
     }
@@ -44,7 +44,7 @@ public class TimeCalculator {
         double endTime = userData.getCurrentSettings().getEnd().getDoubleTime();
 
         // overtime
-        if(calculatingWorkedTime() > 8) {
+        if(getWorkedTime() > 8) {
             double timeToWork = currentTime - endTime;
             return new Time(timeToWork).toString();
         }
@@ -53,7 +53,7 @@ public class TimeCalculator {
         return new Time(timeToWork).toString();
     }
 
-    private double calculatingWorkedTime() {
+    public double getWorkedTime() {
         // it's late and i'm lazy
         // don't judge me
         Setting userSettings = userData.getCurrentSettings();

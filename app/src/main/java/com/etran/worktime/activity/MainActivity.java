@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView time1;
     private TextView time2;
+    private TextView overtime1;
+    private TextView overtime2;
     private RelativeLayout timePanel;
 
     private UserData userData;
@@ -31,11 +33,14 @@ public class MainActivity extends AppCompatActivity {
         initializeListeners();
 
         setTime();
+        setOverTimeText();
     }
 
     private void initializeComponents() {
         time1 = (TextView) findViewById(R.id.time1);
         time2 = (TextView) findViewById(R.id.time2);
+        overtime1 = (TextView) findViewById(R.id.overTime1);
+        overtime2 = (TextView) findViewById(R.id.overTime2);
         timePanel = (RelativeLayout) findViewById(R.id.timePanel);
     }
 
@@ -57,4 +62,11 @@ public class MainActivity extends AppCompatActivity {
         time2.setText(calculator.calculateTimeToWork());
     }
 
+    private void setOverTimeText() {
+        if(calculator.getWorkedTime() > 8) {
+            overtime1.setText(R.string.overtime_text_1);
+            overtime2.setText(R.string.overtime_text_2);
+        }
+        // standard text is for undertime
+    }
 }

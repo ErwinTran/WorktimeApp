@@ -3,6 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="time_text_size">28dp</dimen>
-    <dimen name="worked_time_size">64dp</dimen>
+    <dimen name="time_text_size">24dp</dimen>
+    <dimen name="worked_time_size">72dp</dimen>
 </resources>
