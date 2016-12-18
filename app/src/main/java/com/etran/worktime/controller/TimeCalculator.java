@@ -21,6 +21,7 @@ public class TimeCalculator {
         Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
+        Time t = new Time(hour, minute);
         return new Time(hour, minute);
     }
 
@@ -33,6 +34,28 @@ public class TimeCalculator {
     }
 
     public String calculateWorkedTime() {
+        double workedTime = calculatingWorkedTime();
+
+        return new Time(workedTime).toString();
+    }
+
+    public String calculateTimeToWork() {
+        double currentTime = getCurrentTime().getDoubleTime();
+        double endTime = userData.getCurrentSettings().getEnd().getDoubleTime();
+
+        // overtime
+        if(calculatingWorkedTime() > 8) {
+            double timeToWork = currentTime - endTime;
+            return new Time(timeToWork).toString();
+        }
+
+        double timeToWork = endTime - currentTime;
+        return new Time(timeToWork).toString();
+    }
+
+    private double calculatingWorkedTime() {
+        // it's late and i'm lazy
+        // don't judge me
         Setting userSettings = userData.getCurrentSettings();
 
         double currentTime = getCurrentTime().getDoubleTime();
@@ -41,12 +64,6 @@ public class TimeCalculator {
         double breakTime = getBreakTime().getDoubleTime();
 
         double workedTime = currentTime - beginning - lunchTime - breakTime;
-
-        return new Time (workedTime).toString();
-    }
-
-    public String calculateOverTime() {
-        // could also be undertime
-        return "04:55";
+        return workedTime;
     }
 }

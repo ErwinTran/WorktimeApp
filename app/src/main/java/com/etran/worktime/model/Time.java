@@ -12,10 +12,6 @@ public class Time {
         this(0, 0);
     }
 
-    public Time(String time) {
-
-    }
-
     public Time(int hour, int minute) {
         this.hour = hour;
         this.minute = minute;
@@ -57,7 +53,25 @@ public class Time {
     public Double getDoubleTime() {
         // name might be misleading
         double time = hour;
-        time = time + (minute / 60);
+        double min = minute;
+        time = time + (min / 60);
         return time;
     }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
 }

@@ -3,7 +3,6 @@ package com.etran.worktime.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -43,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
     private void initializeListeners() {
         timePanel.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-
+                // acts as refresh
+                finish();
+                startActivity(getIntent());
             }
         });
     }
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         time1.setText(calculator.calculateWorkedTime());
 
         // set over/under-time
-        time2.setText(calculator.calculateOverTime());
+        time2.setText(calculator.calculateTimeToWork());
     }
 
 }

@@ -25,7 +25,11 @@ public class UserData {
         endings.add(new Time(16, 50));
         endings.add(new Time(17, 10));
 
-        savedSetting = new Setting(new Time(7, 50), new Time(16, 50), endings, new Time(0, 30), new Time(0, 30));
+        savedSetting = new Setting(new Time(7, 50),
+                new Time(16, 50),
+                endings,
+                new Time(0, 30),
+                new Time(0, 30));
         currentSettings = savedSetting;
     }
 
