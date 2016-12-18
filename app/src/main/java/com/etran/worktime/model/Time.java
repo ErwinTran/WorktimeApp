@@ -28,6 +28,23 @@ public class Time {
 
     @Override
     public String toString() {
+        String h = "" + hour;
+        if(hour < 10) {
+            h = "0" + hour;
+        }
+
+        String m = "" + minute;
+        if(minute < 10) {
+            m = "0" + minute;
+        }
+
         return hour + ":" + minute;
+    }
+
+    public Double getDoubleTime() {
+        // name might be misleading
+        double time = hour;
+        time = time + (minute / 60);
+        return time;
     }
 }

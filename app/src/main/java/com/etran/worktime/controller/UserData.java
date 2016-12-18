@@ -36,4 +36,8 @@ public class UserData {
         return instance;
     }
 
+    public Setting getCurrentSettings() {
+        return currentSettings;
+    }
+
 }
