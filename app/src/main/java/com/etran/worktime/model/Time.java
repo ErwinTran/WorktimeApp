@@ -19,11 +19,24 @@ public class Time {
     public Time(int hour, int minute) {
         this.hour = hour;
         this.minute = minute;
+
+        if(hour > 24 || hour < 0) {
+            this.hour = 0;
+        }
+        if(minute > 60 || minute < 0) {
+            this.minute = 0;
+        }
     }
 
     public Time(double time) {
-        this.hour = (int)time;
-        this.minute = (int) (time * 60) % 60;
+        if(time < 24 || time > 0) {
+            this.hour = (int) time;
+            this.minute = (int) (time * 60) % 60;
+        }
+        else {
+            this.hour = 0;
+            this.minute = 0;
+        }
     }
 
     @Override
@@ -38,7 +51,7 @@ public class Time {
             m = "0" + minute;
         }
 
-        return hour + ":" + minute;
+        return h + ":" + m;
     }
 
     public Double getDoubleTime() {
