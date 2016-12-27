@@ -80,4 +80,16 @@
 
     </RelativeLayout>
 
+    <Button
+        android:text="@string/time_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#f4f4f4"
+        android:textSize="@dimen/button_text_size"
+        android:background="@color/colorPrimary"
+        android:id="@+id/timeButton"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

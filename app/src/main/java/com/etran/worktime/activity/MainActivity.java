@@ -1,8 +1,11 @@
 package com.etran.worktime.activity;
 
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView overtime1;
     private TextView overtime2;
     private RelativeLayout timePanel;
+    private Button timeBt;
 
     private UserData userData;
     private TimeCalculator calculator;
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         overtime1 = (TextView) findViewById(R.id.overTime1);
         overtime2 = (TextView) findViewById(R.id.overTime2);
         timePanel = (RelativeLayout) findViewById(R.id.timePanel);
+        timeBt = (Button) findViewById(R.id.timeButton);
     }
 
     private void initializeListeners() {
@@ -50,6 +55,34 @@ public class MainActivity extends AppCompatActivity {
                 // acts as refresh
                 finish();
                 startActivity(getIntent());
+            }
+        });
+
+        timeBt.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(v.getContext());
+                dialog.setContentView(R.layout.dialog_time);
+                dialog.setTitle("Time");
+
+                NumberPicker numberPicker = (NumberPicker) dialog.findViewById(R.id.numberPicker);
+                String[] numbers = new String[120/5];
+                for(int i = 0; i < numbers.length; i++) {
+                    numbers[i] = Integer.toString(i * 5 + 5);
+                }
+                numberPicker.setDisplayedValues(numbers);
+                numberPicker.setMaxValue(numbers.length-1);
+                numberPicker.setMinValue(0);
+                numberPicker.setValue(5);
+                numberPicker.setWrapSelectorWheel(false);
+
+                numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                    @Override
+                    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                        int newValue = newVal * 5 + 5;
+                    }
+                });
+
+                dialog.show();
             }
         });
     }
