@@ -34,7 +34,7 @@ public class Setting {
         return end;
     }
 
-    public void setEnd() {
+    public void setEnd(Time end) {
         this.end = end;
     }
 

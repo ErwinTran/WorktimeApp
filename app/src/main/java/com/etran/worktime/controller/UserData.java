@@ -44,4 +44,7 @@ public class UserData {
         return currentSettings;
     }
 
+    public void setCurrentSettings(Setting setting) {
+        currentSettings = setting;
+    }
 }

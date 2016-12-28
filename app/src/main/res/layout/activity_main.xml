@@ -80,16 +80,61 @@
 
     </RelativeLayout>
 
-    <Button
-        android:text="@string/time_bt"
+    <Space
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:textColor="#f4f4f4"
-        android:textSize="@dimen/button_text_size"
-        android:background="@color/colorPrimary"
-        android:id="@+id/timeButton"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/justSpace"
+        android:layout_marginBottom="59dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/justSpace"
+        android:id="@+id/buttonsPanel">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/startButton"
+            android:background="@drawable/button_style"
+            android:src="@drawable/ic_assistant_photo_black_24dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/lunchButton"
+            android:background="@drawable/button_style"
+            android:src="@drawable/ic_restaurant_menu_black_24dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/breakButton"
+            android:background="@drawable/button_style"
+            android:src="@drawable/ic_local_cafe_black_24dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/endButton"
+            android:background="@drawable/button_style"
+            android:src="@drawable/ic_directions_run_black_24dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/justSpace"
+        android:layout_above="@+id/justSpace"
+        android:layout_below="@+id/worked_time_text" />
 
 </RelativeLayout>
