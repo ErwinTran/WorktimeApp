@@ -13,13 +13,15 @@ public class Setting {
     private List<Time> endings;
     private Time breakTime;
     private Time lunchTime;
+    private Time workTime;
 
-    public Setting(Time begin, Time end, List<Time> endings, Time breakTime, Time lunchTime) {
+    public Setting(Time begin, Time end, List<Time> endings, Time breakTime, Time lunchTime, Time workTime) {
         this.begin = begin;
         this.end = end;
         this.endings = endings;
         this.breakTime = breakTime;
         this.lunchTime = lunchTime;
+        this.workTime = workTime;
     }
 
     public Time getBegin() {
@@ -60,6 +62,14 @@ public class Setting {
 
     public void setLunchTime(Time lunchTime) {
         this.lunchTime = lunchTime;
+    }
+
+    public Time getWorkTime() {
+        return workTime;
+    }
+
+    public void setWorkTime(Time workTime) {
+        this.workTime = workTime;
     }
 
 }

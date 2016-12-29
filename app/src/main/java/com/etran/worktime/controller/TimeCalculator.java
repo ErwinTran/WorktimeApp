@@ -40,16 +40,16 @@ public class TimeCalculator {
     }
 
     public String calculateTimeToWork() {
-        double currentTime = getCurrentTime().getDoubleTime();
-        double endTime = userData.getCurrentSettings().getEnd().getDoubleTime();
+        double workedTime = getWorkedTime();
+        double workTime = userData.getCurrentSettings().getWorkTime().getDoubleTime();
 
         // overtime
-        if(getWorkedTime() > 8) {
-            double timeToWork = currentTime - endTime;
+        if(workedTime > workTime) {
+            double timeToWork = workedTime - workTime;
             return new Time(timeToWork).toString();
         }
 
-        double timeToWork = endTime - currentTime;
+        double timeToWork = workTime - workedTime;
         return new Time(timeToWork).toString();
     }
 

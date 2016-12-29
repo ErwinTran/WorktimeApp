@@ -19,8 +19,16 @@ public class Time {
         if(hour > 24 || hour < 0) {
             this.hour = 0;
         }
-        if(minute > 60 || minute < 0) {
+        if(minute < 0) {
             this.minute = 0;
+        }
+
+        // minutes over 60
+        if(minute >= 60 ) {
+            int h = minute / 60;
+            int m = minute % 60;
+            this.hour = this.hour + h;
+            this.minute = m;
         }
     }
 

@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_time2);
         dialog.setTitle("Set Starttime");
 
-        UserData userData = UserData.getInstance();
         Setting setting = userData.getCurrentSettings();
 
         final TimePicker timePicker = (TimePicker) dialog.findViewById(R.id.timePicker);
@@ -107,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
         Button saveButton = (Button) dialog.findViewById(R.id.saveTimeBt);
         saveButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                UserData userData = UserData.getInstance();
                 Setting setting = userData.getCurrentSettings();
                 Time startTime = new Time(timePicker.getHour(), timePicker.getMinute());
                 setting.setBegin(startTime);
@@ -147,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
         Button saveButton = (Button) dialog.findViewById(R.id.saveTimeBt);
         saveButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                UserData userData = UserData.getInstance();
                 Setting setting = userData.getCurrentSettings();
                 Time lunchTime = new Time(0, numberPicker.getValue() * 5);
                 setting.setLunchTime(lunchTime);
@@ -187,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
         Button saveButton = (Button) dialog.findViewById(R.id.saveTimeBt);
         saveButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                UserData userData = UserData.getInstance();
                 Setting setting = userData.getCurrentSettings();
                 Time breakTime = new Time(0, numberPicker.getValue() * 5);
                 setting.setBreakTime(breakTime);
@@ -206,7 +202,6 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_time2);
         dialog.setTitle("Set Endtime");
 
-        UserData userData = UserData.getInstance();
         Setting setting = userData.getCurrentSettings();
 
         final TimePicker timePicker = (TimePicker) dialog.findViewById(R.id.timePicker);
@@ -218,7 +213,6 @@ public class MainActivity extends AppCompatActivity {
         Button saveButton = (Button) dialog.findViewById(R.id.saveTimeBt);
         saveButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                UserData userData = UserData.getInstance();
                 Setting setting = userData.getCurrentSettings();
                 Time endTime = new Time(timePicker.getHour(), timePicker.getMinute());
                 setting.setEnd(endTime);

@@ -29,7 +29,8 @@ public class UserData {
                 new Time(16, 50),
                 endings,
                 new Time(0, 30),
-                new Time(0, 30));
+                new Time(0, 30),
+                new Time(8, 0));
         currentSettings = savedSetting;
     }
 
