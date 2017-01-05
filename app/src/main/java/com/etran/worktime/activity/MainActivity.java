@@ -6,16 +6,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.etran.worktime.R;
+import com.etran.worktime.controller.EndListArrayAdapter;
 import com.etran.worktime.controller.TimeCalculator;
 import com.etran.worktime.controller.UserData;
 import com.etran.worktime.model.Setting;
 import com.etran.worktime.model.Time;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView overtime1;
     private TextView overtime2;
     private RelativeLayout timePanel;
+    private ListView endLv;
     private ImageButton startBt;
     private ImageButton lunchBt;
     private ImageButton breakBt;
@@ -53,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         overtime1 = (TextView) findViewById(R.id.overTime1);
         overtime2 = (TextView) findViewById(R.id.overTime2);
         timePanel = (RelativeLayout) findViewById(R.id.timePanel);
+        endLv = (ListView) findViewById(R.id.endList);
         startBt = (ImageButton) findViewById(R.id.startButton);
         lunchBt = (ImageButton) findViewById(R.id.lunchButton);
         breakBt = (ImageButton) findViewById(R.id.breakButton);
@@ -67,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
+
+        setEndListView();
 
         startBt.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
@@ -90,6 +99,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void setEndListView() {
+        List<Time> endTimeList = userData.getCurrentSettings().getEndings();
+        List<String> tempList = new ArrayList<>();
+
+        // could be converted better
+        // buuuuuuuut....
+        // i was tired and lazy
+        for(Time time : endTimeList) {
+            tempList.add(time.toString());
+        }
+
+        String[] endTimes = new String[tempList.size()];
+        endTimes = tempList.toArray(endTimes);
+
+        endLv.setAdapter(new EndListArrayAdapter(this, endTimes));
+    }
+
+    // i was tired and lazy
+    // leave me alone
     private void openStartTimeDialog(View v) {
         final Dialog dialog = new Dialog(v.getContext());
         dialog.setContentView(R.layout.dialog_time2);

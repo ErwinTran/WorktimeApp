@@ -53,6 +53,20 @@ public class TimeCalculator {
         return new Time(timeToWork).toString();
     }
 
+    public String calculateWorkedTimeUntilTime(Time endTime) {
+        double workedTime = getWorkedTime();
+        double time = endTime.getDoubleTime();
+        double startTime = userData.getCurrentSettings().getBegin().getDoubleTime();
+
+        double homeTime = startTime + workedTime;
+        // overtime
+        if(homeTime > time) {
+            return new Time(homeTime - time).toString();
+        }
+        // undertime
+        return new Time(time - homeTime).toString();
+    }
+
     public double getWorkedTime() {
         // it's late and i'm lazy
         // don't judge me

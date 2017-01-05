@@ -135,6 +135,7 @@
         android:layout_height="match_parent"
         android:layout_toEndOf="@+id/justSpace"
         android:layout_above="@+id/justSpace"
-        android:layout_below="@+id/worked_time_text" />
+        android:layout_below="@+id/worked_time_text"
+        android:id="@+id/endList"  />
 
 </RelativeLayout>
