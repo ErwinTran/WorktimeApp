@@ -8,9 +8,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/endTime"
         android:id="@+id/timeBar"
-        android:layout_alignEnd="@+id/workedTime"
         android:indeterminate="false"
-        android:layout_alignStart="@+id/endTime" />
+        android:layout_alignStart="@+id/endTime"
+        android:layout_alignEnd="@+id/workedTime" />
 
     <TextView
         android:text="16:45"
@@ -24,22 +24,23 @@
         android:layout_marginTop="18dp" />
 
     <TextView
-        android:text="07:25"
-        android:textSize="@dimen/end_time_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/workedTime"
-        android:layout_marginEnd="18dp"
-        android:layout_above="@+id/timeBar"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="-------"
+        android:text="@string/divide_line"
         android:textSize="@dimen/end_time_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/arrow"
         android:layout_above="@+id/timeBar"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="07:25"
+        android:textSize="@dimen/end_time_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/workedTime"
+        android:layout_alignBaseline="@+id/arrow"
+        android:layout_alignBottom="@+id/arrow"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="18dp" />
 
 </RelativeLayout>

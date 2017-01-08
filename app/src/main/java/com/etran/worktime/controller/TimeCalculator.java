@@ -54,17 +54,16 @@ public class TimeCalculator {
     }
 
     public String calculateWorkedTimeUntilTime(Time endTime) {
-        double workedTime = getWorkedTime();
-        double time = endTime.getDoubleTime();
+        double timeEnd = endTime.getDoubleTime();
         double startTime = userData.getCurrentSettings().getBegin().getDoubleTime();
+        double workTime = userData.getCurrentSettings().getWorkTime().getDoubleTime();
+        double lunchTime = userData.getCurrentSettings().getLunchTime().getDoubleTime();
+        double breakTime = getBreakTime().getDoubleTime();
 
-        double homeTime = startTime + workedTime;
-        // overtime
-        if(homeTime > time) {
-            return new Time(homeTime - time).toString();
-        }
-        // undertime
-        return new Time(time - homeTime).toString();
+        double time = startTime + breakTime + lunchTime;
+
+        Time result = new Time(timeEnd - time);
+        return result.toString();
     }
 
     public double getWorkedTime() {
