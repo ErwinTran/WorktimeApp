@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Setting setting = userData.getCurrentSettings();
                 Time endTime = new Time(timePicker.getHour(), timePicker.getMinute());
-                setting.setEnd(endTime);
+                setting.getEndings().add(endTime);
                 userData.setCurrentSettings(setting);
                 dialog.dismiss();
 
