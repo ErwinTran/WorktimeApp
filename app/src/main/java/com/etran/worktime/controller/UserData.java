@@ -41,6 +41,14 @@ public class UserData {
         return instance;
     }
 
+    public Setting getSavedSetting() {
+        return savedSetting;
+    }
+
+    public void setSavedSetting(Setting setting) {
+        savedSetting = setting;
+    }
+
     public Setting getCurrentSettings() {
         return currentSettings;
     }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_settings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.etran.worktime.activity.SettingsActivity">
+
+    <TextView
+        android:text="Available Break Time:"
+        android:textSize="@dimen/settings_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/settingsBreakText"
+        android:layout_below="@+id/settingsStartText"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="18dp" />
+
+    <TextView
+        android:text="Usual Lunch Time:"
+        android:textSize="@dimen/settings_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settingsBreakText"
+        android:layout_alignParentStart="true"
+        android:id="@+id/settingsLunchText"
+        android:layout_marginTop="18dp" />
+
+    <TextView
+        android:text="Daily Work Time:"
+        android:textSize="@dimen/settings_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settingsLunchText"
+        android:layout_alignParentStart="true"
+        android:id="@+id/settingsWorkTime"
+        android:layout_marginTop="18dp" />
+
+    <TextView
+        android:text="Start Time:"
+        android:textSize="@dimen/settings_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/settingsStartText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/settingsStartBt"
+        android:layout_alignTop="@+id/settingsStartText"
+        android:layout_alignBaseline="@+id/settingsStartText"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/settingsBreakText"
+        android:layout_alignBaseline="@+id/settingsBreakText"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/settingsBreakBt" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/settingsLunchText"
+        android:layout_alignBaseline="@+id/settingsLunchText"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/settingsLunchBt" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/settingsWorkTime"
+        android:layout_alignBaseline="@+id/settingsWorkTime"
+        android:layout_alignStart="@+id/settingsLunchBt"
+        android:id="@+id/settingsWorkBt" />
+
+    <TextView
+        android:text="Regular End Times:"
+        android:textSize="@dimen/settings_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settingsWorkTime"
+        android:layout_alignParentStart="true"
+        android:id="@+id/settingsEndText"
+        android:layout_marginTop="18dp" />
+
+    <Button
+        android:text="All Good"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/settingsOKBt"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/settingsEndText"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="18dp"
+        android:layout_above="@+id/settingsOKBt"
+        android:id="@+id/settingsEndList" />
+
+</RelativeLayout>
