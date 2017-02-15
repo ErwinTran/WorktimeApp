@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        userData = UserData.getInstance();
+        userData = UserData.getInstance(this);
         calculator = new TimeCalculator(userData);
 
         initializeComponents();

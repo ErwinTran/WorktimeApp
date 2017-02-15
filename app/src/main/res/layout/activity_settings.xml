@@ -31,11 +31,21 @@
         android:layout_marginTop="18dp" />
 
     <TextView
-        android:text="Daily Work Time:"
+        android:text="Standard End Time:"
         android:textSize="@dimen/settings_text_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/settingsLunchText"
+        android:layout_alignParentStart="true"
+        android:id="@+id/settingsEndText"
+        android:layout_marginTop="18dp" />
+
+    <TextView
+        android:text="Daily Work Time:"
+        android:textSize="@dimen/settings_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settingsEndText"
         android:layout_alignParentStart="true"
         android:id="@+id/settingsWorkTime"
         android:layout_marginTop="18dp" />
@@ -80,6 +90,15 @@
         android:text="Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/settingsEndText"
+        android:layout_alignBaseline="@+id/settingsEndText"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/settingsEndBt" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/settingsWorkTime"
         android:layout_alignBaseline="@+id/settingsWorkTime"
         android:layout_alignStart="@+id/settingsLunchBt"
@@ -92,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/settingsWorkTime"
         android:layout_alignParentStart="true"
-        android:id="@+id/settingsEndText"
+        android:id="@+id/settingsEndsText"
         android:layout_marginTop="18dp" />
 
     <Button
@@ -107,7 +126,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/settingsEndText"
+        android:layout_below="@+id/settingsEndsText"
         android:layout_alignParentStart="true"
         android:layout_marginTop="18dp"
         android:layout_above="@+id/settingsOKBt"

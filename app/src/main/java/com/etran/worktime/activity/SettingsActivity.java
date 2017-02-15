@@ -18,6 +18,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Button settingsStartBt;
     private Button settingsBreakBt;
     private Button settingsLunchBt;
+    private Button settingsEndBt;
     private Button settingsWorkBt;
     private Button settingsOkBt;
 
@@ -28,7 +29,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        userData = UserData.getInstance();
+        userData = UserData.getInstance(this);
 
         initializeComponents();
         initializeListeners();
@@ -38,6 +39,7 @@ public class SettingsActivity extends AppCompatActivity {
         settingsStartBt = (Button) findViewById(R.id.settingsStartBt);
         settingsBreakBt = (Button) findViewById(R.id.settingsBreakBt);
         settingsLunchBt = (Button) findViewById(R.id.settingsLunchBt);
+        settingsEndBt = (Button) findViewById(R.id.settingsEndBt);
         settingsWorkBt = (Button) findViewById(R.id.settingsWorkBt);
         settingsOkBt = (Button) findViewById(R.id.settingsOKBt);
 
@@ -45,6 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
         settingsStartBt.setText(setting.getBegin().toString());
         settingsBreakBt.setText(setting.getBreakTime().toString());
         settingsLunchBt.setText(setting.getLunchTime().toString());
+        settingsEndBt.setText(setting.getEnd().toString());
         settingsWorkBt.setText(setting.getWorkTime().toString());
     }
 
@@ -69,6 +72,12 @@ public class SettingsActivity extends AppCompatActivity {
                 openLunchTimeDialog(v);
             }
         });
+        settingsEndBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEndTimeDialog(v);
+            }
+        });
         settingsWorkBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +88,7 @@ public class SettingsActivity extends AppCompatActivity {
         settingsOkBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                userData.saveSettings();
                 finish();
             }
         });
@@ -89,7 +99,7 @@ public class SettingsActivity extends AppCompatActivity {
     private void openStartTimeDialog(View v) {
         final Dialog dialog = new Dialog(v.getContext());
         dialog.setContentView(R.layout.dialog_time2);
-        dialog.setTitle("Set Starttime");
+        dialog.setTitle("Set Usual Starttime");
 
         Setting setting = userData.getCurrentSettings();
 
@@ -118,7 +128,7 @@ public class SettingsActivity extends AppCompatActivity {
     private void openLunchTimeDialog(View v) {
         final Dialog dialog = new Dialog(v.getContext());
         dialog.setContentView(R.layout.dialog_time);
-        dialog.setTitle("Set Lunchtime");
+        dialog.setTitle("Set Average Lunchtime");
 
         final NumberPicker numberPicker = (NumberPicker) dialog.findViewById(R.id.numberPicker);
         String[] numbers = new String[125/5];
@@ -157,7 +167,7 @@ public class SettingsActivity extends AppCompatActivity {
     private void openBreakTimeDialog(View v) {
         final Dialog dialog = new Dialog(v.getContext());
         dialog.setContentView(R.layout.dialog_time);
-        dialog.setTitle("Set Breaktime");
+        dialog.setTitle("Set Available Breaktime");
 
         final NumberPicker numberPicker = (NumberPicker) dialog.findViewById(R.id.numberPicker);
         String[] numbers = new String[95/5];
@@ -193,6 +203,35 @@ public class SettingsActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    private void openEndTimeDialog(View v) {
+        final Dialog dialog = new Dialog(v.getContext());
+        dialog.setContentView(R.layout.dialog_time2);
+        dialog.setTitle("Set Standard Endtime");
+
+        Setting setting = userData.getSavedSetting();
+
+        final TimePicker timePicker = (TimePicker) dialog.findViewById(R.id.timePicker);
+
+        timePicker.setHour(setting.getEnd().getHour());
+        timePicker.setMinute(setting.getEnd().getMinute());
+        timePicker.setIs24HourView(true);
+
+        Button saveButton = (Button) dialog.findViewById(R.id.saveTimeBt);
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Setting setting = userData.getCurrentSettings();
+                Time endTime = new Time(timePicker.getHour(), timePicker.getMinute());
+                setting.setEnd(endTime);
+                userData.setSavedSetting(setting);
+                dialog.dismiss();
+
+                finish();
+                startActivity(getIntent());
+            }
+        });
+        dialog.show();
+    }
+
     private void openWorkTimeDialog(View v) {
         final Dialog dialog = new Dialog(v.getContext());
         dialog.setContentView(R.layout.dialog_time2);
@@ -202,9 +241,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         final TimePicker timePicker = (TimePicker) dialog.findViewById(R.id.timePicker);
 
-        timePicker.setHour(setting.getEnd().getHour());
-        timePicker.setMinute(setting.getEnd().getMinute());
-        timePicker.setIs24HourView(true);
+        timePicker.setHour(setting.getWorkTime().getHour());
+        timePicker.setMinute(setting.getWorkTime().getMinute());
+        timePicker.setIs24HourView(false);
 
         Button saveButton = (Button) dialog.findViewById(R.id.saveTimeBt);
         saveButton.setOnClickListener(new View.OnClickListener(){

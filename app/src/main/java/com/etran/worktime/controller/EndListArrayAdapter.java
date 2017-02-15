@@ -25,7 +25,7 @@ public class EndListArrayAdapter extends ArrayAdapter {
         super(context, R.layout.row_end_time, values);
         this.context = context;
         this.values = values;
-        this.userData = UserData.getInstance();
+        this.userData = UserData.getInstance(context);
         calculator = new TimeCalculator(userData);
     }
 
